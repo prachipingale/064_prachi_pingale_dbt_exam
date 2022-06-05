@@ -1,0 +1,29 @@
+-- section 2-1 stored procedure --
+
+create table TEMPP
+(
+str1 varchar(20),
+str2 varchar(20),
+final char(15));
+
+delimiter //
+
+create procedure PROC1(str1 varchar(50),str2 varchar(50))
+begin
+declare x int(3);
+set x = locate(str1,str2);
+IF X!=0 THEN
+insert into TEMPP values
+(str1,str2,'yes');
+ELSE
+insert into TEMPP values
+(str1,str2,'NO');
+
+end if;
+end;//
+
+delimiter ;
+
+call PROC1('DAC','CDAC');
+
+select* from TEMPP;

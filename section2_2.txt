@@ -1,0 +1,23 @@
+-- section 2-2 STORE FUNCTION --
+delimiter //
+
+create function FUNC1(x int,y int,z int)
+returns boolean
+deterministic
+begin
+IF x<y+z THEN
+ return TRUE;
+ELSEIF y<x+z THEN
+ return TRUE;
+ELSEIF z<x+y THEN
+ return TRUE;
+ELSE
+ return FALSE;
+
+END IF;
+
+ end//
+
+delimiter ;
+
+select FUNC1(2,3,5);
